@@ -1,0 +1,7 @@
+#directory "_build";;
+#require "str";;
+#require "ANSITerminal";;
+#require "lwt.unix"
+#load_rec "gameState.cmo";;
+#load_rec "snek.cmo";;
+#load_rec "main.cmo";;

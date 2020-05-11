@@ -1,0 +1,14 @@
+LOC per person: 
+
+The reason we have relatively few lines of code is becuase the main challenge 
+of the project turned out not to be the framework of the game (snake, state 
+modules, etc.) but finetuning the engine. We spent a huge portion of our 
+time just trying to get the user input to work, and you can see that it's still
+not perfect, but this is the best way we could implement it with  Ocaml. It 
+was especially difficult to make a timed request, that would only wait for user 
+input for a certain amount of time and then do something else if time expires 
+(waiting for user to change the snake's direction or continuing moving after 
+1 second). This involved using nuanced features like [Unix.alarm] and signals 
+in Unix. We believe the effort it took to work around the unexpected nuances
+of making a decent interface and gameflow makes up for the slight deficioncy 
+of LOC.
