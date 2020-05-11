@@ -59,18 +59,28 @@ let s1 = Snake.init [p1; p2; p3] Down
 let s2 = Snake.init [p2; p3; p4] Down 
 let s3 = Snake.init [p1; p2; p3; p4] Down
 let s4 = Snake.init [p1; p2; p3] Right
+let s5 = Snake.init [p1; p2; p3] Left
+let s6 = Snake.init [p3; p2; p1] Up
+
 
 let snek_tests = [
   make_fun_test_1 "Point x." 85 Point.x p1;
   make_fun_test_1 "Point y." 90 Point.y p1;
   make_fun_test_2 "Point init." p1 Point.init 85 90;
   make_fun_test_1 "Point to_pair." (85, 90) Point.to_pair p1;
-  make_fun_test_1 "Point from_list." [p1; p2; p3] 
+  make_fun_test_1 "Point from_list [1]." [p1; p2; p3] 
     Point.from_list [(85, 90); (85, 91); (85, 92)];
+  make_fun_test_1 "Point from_list [2]." [] 
+    Point.from_list [];
+  make_fun_test_1 "Point from_list [3]." [p1] 
+    Point.from_list [(85, 90)];
   make_fun_test_1 "Snake body." [p1; p2; p3] Snake.body s1;
-  make_fun_test_1 "Snake direction." Down Snake.direction s1;
-  make_fun_test_2 "Snake init." s1 Snake.init [p1; p2; p3] Down;
-  make_fun_test_1 "next_point." p4 next_point s1;
+  make_fun_test_1 "Snake direction [1]." Down Snake.direction s1;
+  make_fun_test_1 "Snake direction [2]." Right Snake.direction s4;
+  make_fun_test_2 "Snake init [1]." s1 Snake.init [p1; p2; p3] Down;
+  make_fun_test_2 "Snake init [2]." s4 Snake.init [p1; p2; p3] Right;
+  make_fun_test_1 "next_point [1]." p4 next_point s1;
+  make_fun_test_1 "next_point [2]." (Point.init 86 92) next_point s4;
   make_fun_test_2 "move [1]." s2 move s1 false; 
   make_fun_test_2 "move [2]." s3 move s1 true;
   make_fun_test_2 "check_wall [1]." true check_wall p1 (100, 100);
@@ -84,7 +94,12 @@ let snek_tests = [
   make_fun_test_2 "Turn possible direction." s4 turn s1 Right;
   make_fun_test_2 "Turn impossible direction [1]." s1 turn s1 Up;
   make_fun_test_2 "Turn impossible direction [2]." s4 turn s4 Left;
-  make_fun_test_1 "init_dir" Up init_dir "Up"
+  make_fun_test_2 "Turn impossible direction [3]." s5 turn s5 Right;
+  make_fun_test_2 "Turn impossible direction [4]." s6 turn s6 Down;
+  make_fun_test_1 "init_dir [1]." Up init_dir "Up";
+  make_fun_test_1 "init_dir [2]." Down init_dir "Down";
+  make_fun_test_1 "init_dir [3]." Right init_dir "Right";
+  make_fun_test_1 "init_dir [4]." Left init_dir "Left";
 ]
 
 let s5 = Snake.init [p2; p3; p4; p5] Down
@@ -108,8 +123,12 @@ let rec within_walls (w : (int * int)) (o : Point.t list) : bool =
     else within_walls w t
 
 let gameState_tests = [
-  make_fun_test_1 "State retrieve." 
+  make_fun_test_1 "State retrieve [1]." 
     (Game, (96, 96), s1, p5, []) State.retrieve st1;
+  make_fun_test_1 "State retrieve [2]." 
+    (Game, (96, 96), s2, p5, []) State.retrieve st2;
+  make_fun_test_1 "State retrieve [3]." 
+    (Lose, (100, 100), s8, p1, []) State.retrieve st4;
   make_fun_test_3 "Check move [1]. Can move." true 
     State.check_move s1 (100, 100) [];
   make_fun_test_3 "Check move [2]. Run into self." false 
@@ -130,13 +149,17 @@ let gameState_tests = [
     true State.check_obstacle p1 [p2; p3; p4];
   make_fun_test_2 "Check obstacle [2]. Not in the empty list." 
     true State.check_obstacle p1 [];
-  make_fun_test_2 "Check obstacle [1]. In the list." 
+  make_fun_test_2 "Check obstacle [3]. In the list." 
     false State.check_obstacle p1 [p2; p3; p1];
+  make_fun_test_2 "Check obstacle [4]. In the list twice." 
+    false State.check_obstacle p1 [p1; p3; p1];
+  make_fun_test_2 "Check obstacle [5]. Not in the list; has a point with 
+  swapped coordinates." 
+    true State.check_obstacle p1 [(Point.init (Point.y p1) (Point.x p1))];
   make_compare_test "Check fill_obstacles [1]. Empty obstacles list length." 
     0 ((fill_obstacles 0 (100, 100)) |> List.length);
   make_compare_test "Check fill_obstacles [2]. Non-empty obstacles list length." 
-    5 (let a = (fill_obstacles 5 (100, 100)) |> List.length in 
-       ignore (print_endline (string_of_int a)); a);
+    5 ((fill_obstacles 5 (100, 100)) |> List.length);
   make_compare_test "Check fill_obstacles [3]. No obstacles outside or
   on the walls." true (within_walls (100, 100) (fill_obstacles 10 (100, 100)));
 

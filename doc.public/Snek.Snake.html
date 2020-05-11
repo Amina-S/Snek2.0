@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Snek.Point.html">
+<link rel="Up" href="Snek.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Snek" rel="Chapter" href="Snek.html">
+<link title="GameState" rel="Chapter" href="GameState.html">
+<link title="Authors" rel="Chapter" href="Authors.html">
+<link title="Main" rel="Chapter" href="Main.html"><title>Snek.Snake</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Snek.Point.html" title="Snek.Point">Previous</a>
+&nbsp;<a class="up" href="Snek.html" title="Snek">Up</a>
+&nbsp;</div>
+<h1>Module <a href="type_Snek.Snake.html">Snek.Snake</a></h1>
+
+<pre><span id="MODULESnake"><span class="keyword">module</span> Snake</span>: <code class="type"><a href="Snek.SnakeSig.html">SnakeSig</a></code><code class="type"> </code></pre><hr width="100%">
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+<div class="info ">
+<div class="info-desc">
+<p>Returns the list of points occupied by <code class="code">s</code>. The last element of the 
+      list is the 'head' of the snake, and the first element of the list is 
+      the 'tail' of the snake (that is about to disappear if the move is 
+      allowed).</p>
+</div>
+</div>
+
+
+<pre><span id="VALbody"><span class="keyword">val</span> body</span> : <code class="type"><a href="Snek.SnakeSig.html#TYPEt">t</a> -> Point.t list</code></pre><div class="info ">
+<div class="info-desc">
+<p>Returns an object of type <code class="code">dir</code> that corresponds to the current 
+      direction of <code class="code">s</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALdirection"><span class="keyword">val</span> direction</span> : <code class="type"><a href="Snek.SnakeSig.html#TYPEt">t</a> -> <a href="Snek.html#TYPEdir">Snek.dir</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Takes in a <code class="code">Point.t list</code> object and a <code class="code">dir</code> object.
+      Initializes <code class="code">s</code> of type <code class="code">Snake.t</code> with the given inputs.</p>
+</div>
+</div>
+
+<pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">Point.t list -> <a href="Snek.html#TYPEdir">Snek.dir</a> -> <a href="Snek.SnakeSig.html#TYPEt">t</a></code></pre></body></html>

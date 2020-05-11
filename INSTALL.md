@@ -15,4 +15,4 @@
 
 ## To run tests on the game:
 1. Run "make test"
-2. Hopefully the tests all run fine
+2. You have to play and lose before the tests run

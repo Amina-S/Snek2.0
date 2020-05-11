@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Snek.html">
+<link rel="next" href="Authors.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="Snek" rel="Chapter" href="Snek.html">
+<link title="GameState" rel="Chapter" href="GameState.html">
+<link title="Authors" rel="Chapter" href="Authors.html">
+<link title="Main" rel="Chapter" href="Main.html"><title>GameState</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Snek.html" title="Snek">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Authors.html" title="Authors">Next</a>
+</div>
+<h1>Module <a href="type_GameState.html">GameState</a></h1>
+
+<pre><span id="MODULEGameState"><span class="keyword">module</span> GameState</span>: <code class="code">sig</code> <a href="GameState.html">..</a> <code class="code">end</code></pre><hr width="100%">
+
+<pre><code><span id="TYPEstate"><span class="keyword">type</span> <code class="type"></code>state</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTstate.Game"><span class="constructor">Game</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTstate.Lose"><span class="constructor">Lose</span></span></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="MODULETYPEStateSig"><span class="keyword">module type</span> <a href="GameState.StateSig.html">StateSig</a></span> = <code class="code">sig</code> <a href="GameState.StateSig.html">..</a> <code class="code">end</code></pre>
+<pre><span id="MODULEState"><span class="keyword">module</span> <a href="GameState.State.html">State</a></span>: <code class="code">sig</code> <a href="GameState.State.html">..</a> <code class="code">end</code></pre>
+<pre><span id="VALfill_obstacles"><span class="keyword">val</span> fill_obstacles</span> : <code class="type">int -> int * int -> <a href="Snek.Point.html#TYPEt">Snek.Point.t</a> list</code></pre>
+<pre><span id="VALprint_horizontal"><span class="keyword">val</span> print_horizontal</span> : <code class="type">int -> int -> unit</code></pre>
+<pre><span id="VALprint_sides"><span class="keyword">val</span> print_sides</span> : <code class="type">int -><br>       int -> int -> <a href="Snek.Point.html#TYPEt">Snek.Point.t</a> list -> <a href="Snek.Point.html#TYPEt">Snek.Point.t</a> -> <a href="Snek.Point.html#TYPEt">Snek.Point.t</a> list -> unit</code></pre>
+<pre><span id="VALdraw_game"><span class="keyword">val</span> draw_game</span> : <code class="type">int -><br>       int -><br>       int -> int -> <a href="Snek.Point.html#TYPEt">Snek.Point.t</a> list -> <a href="Snek.Point.html#TYPEt">Snek.Point.t</a> -> <a href="Snek.Point.html#TYPEt">Snek.Point.t</a> list -> unit</code></pre>
+<pre><span id="VALdraw_state"><span class="keyword">val</span> draw_state</span> : <code class="type">State.t -> unit</code></pre></body></html>
